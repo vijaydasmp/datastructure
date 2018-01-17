@@ -41,9 +41,13 @@ Graph::topo()
     
     bool *visited = new bool[V];
     
+    for ( int i =0; i < V ; i++)
+         visited[i] = false;
+    
     for( int i = 0; i<V ; i++)
     {
-        topoUtil(i,visited,stk);
+        if(!visited[i])
+            topoUtil(i,visited,stk);
     }
     
     while(!stk.empty())
@@ -55,7 +59,8 @@ Graph::topo()
 
 int main()
 {
-     Graph g(5);g.addEdge(5, 2);
+    Graph g(5);
+    g.addEdge(5, 2);
     g.addEdge(5, 0);
     g.addEdge(4, 0);
     g.addEdge(4, 1);
