@@ -35,4 +35,14 @@ Graph::topoUtil(int s, bool visited[], stack<int> & stk)
     stk.push(s);
 }
 
-Graph
+Graph::topo()
+{
+    stack<in> stk;
+    
+    bool *visited = new bool[V];
+    
+    for( int i = 0; i<V ; i++)
+    {
+        topoUtil(i,);
+    }
+}
