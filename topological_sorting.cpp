@@ -43,6 +43,12 @@ Graph::topo()
     
     for( int i = 0; i<V ; i++)
     {
-        topoUtil(i,);
+        topoUtil(i,visited,stk);
+    }
+    
+    while(!stk.empty())
+    {
+        cout<<stk.top()<<" ";
+        stk.pop()
     }
 }
