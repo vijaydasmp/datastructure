@@ -5,5 +5,34 @@ class Graph
     void topoUtil(int s);
     public:
     Graph(int v);
-    void addEdge(int u, int v);                   
+    void addEdge(int u, int v);
+    void topoSort();
 }
+
+
+Graph::Graph(int v)
+{
+    V = v;
+    adj = new list<int>[V];
+}
+
+Graph::addEdge(int u, int v)
+{
+    adj[u].push_back(v);
+}
+               
+Graph::topoUtil(int s, bool visited[], stack<int> & stk)
+{
+    visited[s] = true;
+    list<int>::iterator i;
+    
+    for( i = adj[s].begin() ; i != adj[s].end(); i++)
+    {
+        if(!visited[*i])
+            topoUtil(*i, visited, stk);
+    }
+    
+    stk.push(s);
+}
+
+Graph
