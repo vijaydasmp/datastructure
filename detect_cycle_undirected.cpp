@@ -22,20 +22,31 @@ Graph::addEdge(int u, int v)
   adj[u].push_back(v);
 }
 
-Grap::has_cycle_util(int s, bool visited[], bool recstak[])
+Grap::has_cycle_util(int v, bool visited[], bool recstak[])
 {
-  visited[s] = true;
-  cout<<s<<" ";
   
-  list<int> iterator i;
-  
-  for( i = adj[s].begin(); i != adj[s].end(); i++)
+  if(visited[v] == false)
   {
-     if( !visited[*i])
-     {
-       has_cycle_util(*i, visited);
-     }
+    visited[v] = true;
+    recstak[v] = true;
+  
+    list<int> iterator i;
+  
+    for(i = adj[s].begin(); i != adj[s].end(); i++)
+    {
+       if( !visited[*i] && has_cycle_util(*i, visited))
+       {
+          return true;       
+       }
+       else if ( recstak[*i] == true)
+       {
+          return true;
+       }
+    }
   }
+  
+  recstak[v] = false;
+  return false;
   
 }
 Grap::has_cycle(int s)
@@ -54,7 +65,7 @@ Grap::has_cycle(int s)
   for ( i = adj[s].begin(); i != adj[s].end())
   {
      if (!visited[*i])
-        has_cycle_util(*i, visited)    
+        has_cycle_util(*i, visited, recstak)    
   }
   
 }
