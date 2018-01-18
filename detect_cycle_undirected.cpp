@@ -30,15 +30,24 @@ Grap::has_cycle_util(int s, bool visited[])
   list<int> iterator i;
   
   for( i = adj[s].begin(); i != adj[s].end(); i++)
-    
+  {
+     if( !visited[*i])
+     {
+       has_cycle_util(*i, visited);
+     }
+  }
   
 }
 Grap::has_cycle(int s)
 {
   bool *visited = new bool[V];
+  bool *recstak = new bool[V];
   
   for (int i = 0; i< V; i++)
+  {
         visited[i] = false;
+        recstak[i] = false;
+  }
   
   list<int>::iterator i;
     
