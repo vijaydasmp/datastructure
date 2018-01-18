@@ -22,6 +22,17 @@ Graph::addEdge(int u, int v)
   adj[u].push_back(v);
 }
 
+Grap::has_cycle_util(int s, bool visited[])
+{
+  visited[s] = true;
+  cout<<s<<" ";
+  
+  list<int> iterator i;
+  
+  for( i = adj[s].begin(); i != adj[s].end(); i++)
+    
+  
+}
 Grap::has_cycle(int s)
 {
   bool *visited = new bool[V];
@@ -34,8 +45,7 @@ Grap::has_cycle(int s)
   for ( i = adj[s].begin(); i != adj[s].end())
   {
      if (!visited[*i])
-        has_cycle_util(*i, visited)
-       
+        has_cycle_util(*i, visited)    
   }
   
 }
