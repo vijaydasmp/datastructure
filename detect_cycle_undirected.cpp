@@ -4,7 +4,7 @@ class Graph
   private:
     int V;
     list<int> *adj
-    void has_cycle_util(int s, bool visited[]);  
+    void has_cycle_util(int s, bool visited[], bool recstak);  
   public:
    Graph(int v);
    void addEdge(int u, int v);
@@ -22,7 +22,7 @@ Graph::addEdge(int u, int v)
   adj[u].push_back(v);
 }
 
-Grap::has_cycle_util(int s, bool visited[])
+Grap::has_cycle_util(int s, bool visited[], bool recstak[])
 {
   visited[s] = true;
   cout<<s<<" ";
