@@ -21,6 +21,4 @@ Graph * CreateGraph(int V, int E)
   return g;
 }
 
-void adddEdge(int u , int v, int wt)
-{
-}
+w
