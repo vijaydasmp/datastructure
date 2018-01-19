@@ -22,7 +22,7 @@ class Graph
 {
    int V;
    list<int> *adj;
-   bool isCyclicUtil(int u, bool visited[]), int parent;
+   bool isCyclicUtil(int u, bool visited[], int parent);
    public:
    Graph(int v);
    void addEdge(int u, int v);
@@ -42,6 +42,28 @@ Graph::addEdge(int u, int v)
    adj[v].push_back(u);  
 }
 
+bool Graph::isCyclicUtil(int s, bool visited[], int parent)
+{
+   visited[u] = true;
+   
+   list<int>::iterator it;
+   for(it = adj[s].begin(); it != adj[s].end(); it++)
+   {
+      if(!visited[*it] 
+      {  
+            if(isCyclicUtil(*it, visited, s))
+               return true;
+      }
+      else
+      {
+          if(*it != parent)
+          {
+             return true;
+          }        
+      }
+   } 
+   return false;
+}
 
 bool Graph::isCyclic(int s)
 {
@@ -54,6 +76,10 @@ bool Graph::isCyclic(int s)
    
    for(it = adj[s].begin(); it != adj[s].end(); it++)
    {
-      
+      if(!visited[*it])
+         if(isCyclicUtil(*it,visited, *it))
+            return true;
    }
+   
+   return false;
 }
