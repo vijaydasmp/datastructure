@@ -14,4 +14,28 @@ The assumption of this approach is that there are no parallel edges between any 
         |  \
         |    \
         1-----2 */ 
+#include<iostream>
 
+using namespace std;
+
+class Graph
+{
+   int V;
+   list<int> *adj;
+   bool isCyclicUtil();
+   public:
+   Graph(int v);
+   void addEdge(int u, int v);
+   bool isCyclic();
+};
+
+
+Graph::Graph(int v)
+{
+   V = v;
+   adj = new list<int>[V];
+}
+
+Graph::addEdge(int u, int v)
+{
+}
