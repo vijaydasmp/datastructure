@@ -1,19 +1,8 @@
-int bsearch(int *array, int n, int item)
+int binarySearch(int array[], int low , int high, int item)
 {
-  // Discard zero array
-    if (n <= 0)
-        return -1;
- 
-    int low = 0;
-    int high = n-1;      
-     
-  return bsearch_util(array, low, high, item); 
-}
-
-
-int bsearch_util(int array[], int low , int high, int item)
-{
-  mid = (low + (high - low))/2;
+  if ( low <= high)
+  {
+  int mid = low + (high - low)/2;
   
   if ( array [mid] == item)
   {
@@ -22,13 +11,27 @@ int bsearch_util(int array[], int low , int high, int item)
   if (array[mid] < item)
   {
     low = mid;
-    return bsearch_util(array, low, high, item); 
+    return binarySearch(array, low, high, item); 
   }
   if (array[mid] > item)
   {
-    high = mid;
-    return bsearch_util(array, low, high, item); 
+    high = mid-1;
+    return binarySearch(array, low, high, item); 
   }
-  
+ }
    return -1;
+}
+
+
+int main(void)
+{
+	int arr[] = {2, 3, 4, 10, 40};
+	int n = sizeof(arr)/ sizeof(arr[0]);
+	int x = 10;
+	int result = binarySearch(arr, 0, n-1, x);
+	(result == -1)? printf("Element is not present"
+									" in array")
+			: printf("Element is present at "
+								"index %d", result);
+	return 0;
 }
