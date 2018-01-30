@@ -7,8 +7,9 @@ class Logger
 {
 	
 	private:
-	
-	enum class Messagetype
+	ofstream logfile;
+	static Logger *m_instance;
+	enum class MSGTYPE
 	{
 	   INFO,
 	   WARN,
@@ -16,8 +17,20 @@ class Logger
 	}
 
 	Logger();
-  Logger(const Logger &lg);
-  Logger& operator =(const Logger &lg);
-  ~Logger();
+  	Logger(const Logger &lg);
+  	Logger& operator =(const Logger &lg);
+  	~Logger();
 	
+	public:
+	
+	initialize()
+	{
+	   logfile.open("/var/tmp/log.txt",ios::out);	
+	}
+	
+	write(MSGTYPE type, str msg )
+	{
+		
+	}
+		
 }
